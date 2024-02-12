@@ -25,6 +25,7 @@ public class BinaryTreeMain {
         bt.root = new Node(1);
         bt.root.setLeft(new Node(2));
         bt.root.setRight(new Node(3));
+        bt.root.getRight().setLeft(new Node(7));
         bt.root.getLeft().setLeft(new Node(4));
         bt.root.getLeft().setRight(new Node(5));
         bt.root.getLeft().getLeft().setLeft(new Node(6));
@@ -45,7 +46,6 @@ public class BinaryTreeMain {
         // find an element in a tree level order traversal
 
         // traverse using level order or breadth first search
-
         System.out.print("Binary Tree levelorder or breadth first search= ");
         bt.levelOrder(bt.root);
 
@@ -72,5 +72,22 @@ public class BinaryTreeMain {
         System.out.println("max value = "+maxValue);
         int minValue = bt.minValueInBinaryTree(bt.root);
         System.out.println("min value = "+minValue);
+
+        // print node at a given level
+        System.out.print("print all node of that level = ");
+        bt.printLevel(bt.root,2);
+
+        // maximum width of a binary tree at a level
+        System.out.println();
+        System.out.print("maximum width of binary Tree at level = "+bt.maximumWidthAtLevel(bt.root));
+
+        //left view of a tree
+
+        // construct binary tree from pre-order and inorder
+
+        // construct binary tree from post-order and inorder
+
+
+
     }
 }

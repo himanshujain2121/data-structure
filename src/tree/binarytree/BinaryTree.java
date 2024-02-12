@@ -5,7 +5,7 @@ import tree.Node;
 import java.util.*;
 
 public class BinaryTree {
-    Node root;
+    public Node root;
 
     public void inOrder(Node root){
         if(root != null){
@@ -118,5 +118,35 @@ public class BinaryTree {
         return Math.min(root.getKey(),Math.min(minValueInBinaryTree(root.getLeft()),minValueInBinaryTree(root.getRight())));
     }
 
+    public void printLevel(Node root,int level){
+        if(root == null){
+            return;
+        }
+        if(level == 0){
+            System.out.print(root.getKey()+", ");
+        }
+        else {
+            printLevel(root.getLeft(),level-1);
+            printLevel(root.getRight(),level-1);
+        }
+    }
 
+    public int maximumWidthAtLevel(Node root) {
+        Queue<Node> que = new LinkedList<>();
+        int max = 0;
+            que.add(root);
+            while(!que.isEmpty()){
+                max = Math.max(max,que.size());
+                for(int i = 0; i < que.size();i++){
+                    Node temp = que.poll();
+                    if(temp.getLeft() != null){
+                        que.add(temp.getLeft());
+                    }
+                    if(temp.getRight() != null){
+                        que.add(temp.getRight());
+                    }
+                }
+            }
+            return max;
+    }
 }
